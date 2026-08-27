@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+
+    int total_size = sizeof(arr);
+    int element_size = sizeof(arr[0]);
+    int number_of_elements = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Total size of array = %d bytes\n", total_size);
+    printf("Size of one element = %d bytes\n", element_size);
+    printf("Number of elements = %d\n", number_of_elements);
+
+    return 0;
+}
