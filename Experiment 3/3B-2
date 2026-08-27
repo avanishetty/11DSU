@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200], word[50];
+    int count = 0;
+
+    printf("Enter the main string: ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("Enter string to count: ");
+    fgets(word, sizeof(word), stdin);
+
+    word[strcspn(word, "\n")] = '\0';
+
+    int len = strlen(word);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (strncmp(&str[i], word, len) == 0) {
+            count++;
+        }
+    }
+
+    printf("Number of occurrences = %d\n", count);
+
+    return 0;
+}
