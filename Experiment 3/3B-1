@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200], word[50];
+    int found = 0;
+
+    printf("Enter the main string: ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("Enter string to search: ");
+    fgets(word, sizeof(word), stdin);
+
+    word[strcspn(word, "\n")] = '\0';
+
+    printf("String found at positions: ");
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (strncmp(&str[i], word, strlen(word)) == 0) {
+            printf("%d ", i);
+            found = 1;
+        }
+    }
+
+    if (!found)
+        printf("Not found");
+
+    return 0;
+}
