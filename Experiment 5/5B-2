@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100][100], temp[100];
+    int n, i, j, k, result;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    printf("Enter strings:\n");
+    for (i = 0; i < n; i++)
+        scanf("%s", str[i]);
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - 1 - i; j++) {
+
+            k = 0;
+            result = 0;
+
+            while (str[j][k] != '\0' && str[j + 1][k] != '\0') {
+                if (str[j][k] != str[j + 1][k]) {
+                    result = str[j][k] - str[j + 1][k];
+                    break;
+                }
+                k++;
+            }
+
+            if (result == 0) {
+                if (str[j][k] != str[j + 1][k])
+                    result = str[j][k] - str[j + 1][k];
+            }
+
+            // Descending order
+            if (result < 0) {
+                strcpy(temp, str[j]);
+                strcpy(str[j], str[j + 1]);
+                strcpy(str[j + 1], temp);
+            }
+        }
+    }
+
+    printf("\nStrings in descending order:\n");
+    for (i = 0; i < n; i++)
+        printf("%s\n", str[i]);
+
+    return 0;
+}
